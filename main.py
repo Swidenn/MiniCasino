@@ -44,18 +44,18 @@ while run:
         screen.blit(menu_image, menu_rect)
         screen.blit(play_button_image, play_button_image_rect)
 
-    if game.is_paused:
-        game.paused(screen)
+    elif game.is_game:
+        if game.is_choose_menu:
+            game.choose(screen)
 
-    elif game.is_choose_menu:
-        game.choose(screen)
-
-    if game.is_game:
-        if course.is_rules:
+        elif course.is_rules and not game.is_choose_menu:
             course.rule(screen)
 
-        if course.is_lunch and game.is_game:
+        elif course.is_lunch and game.is_game:
             course.lunch(screen)
+
+    elif game.is_paused:
+        game.paused(screen)
 
     # 4- Flip() est essentiel pour update la surface donc très importants.
     pygame.display.flip()
@@ -85,7 +85,37 @@ while run:
         elif event.type == pygame.KEYUP:
             game.press[event.key] = False
 
-# 8- Evènement le boutton gauche de la souris clique
-        # elif event.type == pygame.MOUSEBUTTONDOWN:
+        # 8- Evènement le boutton gauche de la souris clique
+        elif event.type == pygame.MOUSEBUTTONDOWN:
 
-        # !!! Faire les boutons !!!
+            if game.is_menu:
+
+                if play_button_image_rect.collidepoint(event.pos):
+                    game.is_menu = False
+                    game.is_game = True
+                    game.is_choose_menu = True
+
+            if game.is_game:
+
+                if game.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch:
+                    game.is_choose_menu = False
+                    course.is_lunch = True
+
+                elif course.ok_image_rect.collidepoint(event.pos) and course.is_lunch:
+                    course.is_rules = False
+
+                if course.nombre.un_rect.collidepoint(event.pos):
+
+                    if course.nombre.is_premier:
+                        course.nombre.un_rect.x = 283
+                        course.nombre.un_rect.y = 502
+                        course.nombre.is_premier = False
+                        course.nombre.is_premier_pris = True
+
+                    else:
+                        course.nombre.un_rect.x = course.nombre.x_un
+                        course.nombre.un_rect.y = course.nombre.y_haut
+                        course.nombre.is_premier_pris = False
+                        course.nombre.is_premier = True
+
+                    # !!! Reformulez les conditions !!!

@@ -1,6 +1,7 @@
 # coding: utf-8
 import pygame
 from modules.course import course
+from nombres import Nombre
 from game import Game
 
 class Course():
@@ -11,8 +12,9 @@ class Course():
         self.is_lunch = False
 
         self.game = Game()
+        self.nombre = Nombre()
 
-# 1- Règles de la course de cheveaux!
+# 1- Règles de la course de chevaux!
         self.regles_image = pygame.image.load("assets/png/regles_cheveaux.png")
         self.regles_image_rect = self.regles_image.get_rect()
         self.regles_image_rect.x = 0
@@ -67,6 +69,6 @@ class Course():
         if self.is_lunch:
 
             screen.blit(self.selection_image, self.selection_image_rect)
-            # !! Ici aura les cheveaux sélectionner !!
+            self.nombre.nb_position(screen)
             screen.blit(self.position_image, self.position_image_rect)
             screen.blit(self.confirm_image, self.confirm_image_rect)
