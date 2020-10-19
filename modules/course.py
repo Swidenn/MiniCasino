@@ -1,6 +1,6 @@
 # coding: utf-8
 
-def course(c1, c2, c3, c4, c5):
+def course(c1, c2, c3, c4, c5, tirage):
     """
     Cette fonction prend en paramètre 5 positions et les test
 
@@ -9,6 +9,8 @@ def course(c1, c2, c3, c4, c5):
     :param c3:
     :param c4:
     :param c5:
+    :param liste:
+    apport de la liste de cheveaux chevaux
 
     :return:
     Si la fonction retourne 1 -> Alors 5 cheveaux bien placé
@@ -18,9 +20,8 @@ def course(c1, c2, c3, c4, c5):
     Si la fonction retourne 5 -> Alors 4 cheveaux dans le désorde
     Si la fonction retourne 6 -> Alors vous avez perdu
     """
-    from tirage import tirage
 
-    lunch = tirage()
+    lunch = tirage
     print(lunch)
 
     if c1 == lunch[0] and c2 == lunch[1] and c3 == lunch[2]:

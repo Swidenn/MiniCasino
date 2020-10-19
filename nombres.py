@@ -15,17 +15,6 @@ class Nombre:
 
     def __init__(self):
 
-        self.is_premier = True
-        self.is_deuxieme = False
-        self.is_troisieme = False
-        self.is_quatrime = False
-        self.is_cinqieme = False
-        self.is_premier_pris = False
-        self.is_deuxieme_pris = False
-        self.is_troisieme_pris = False
-        self.is_quatrime_pris = False
-        self.is_cinqieme_pris = False
-
         self.y_haut = 34
         self.y_bas = 161
 

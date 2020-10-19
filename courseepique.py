@@ -1,6 +1,17 @@
 # coding: utf-8
+
+"""
+Développer par DELIOT Yllan
+Terminal Générale n°9
+19/10/2020
+
+But de ce fichier:
+Code ayant le jeu course de cheveaux en lui même
+"""
+
 import pygame
 from modules.course import course
+from modules.tirage import tirage
 from nombres import Nombre
 from game import Game
 
