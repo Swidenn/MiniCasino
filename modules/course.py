@@ -15,14 +15,13 @@ def course(c1, c2, c3, c4, c5, tirage):
     :return:
     Si la fonction retourne 1 -> Alors 5 cheveaux bien placé
     Si la fonction retourne 2 -> Alors 4 cheveaux bien placé
-    Si la fonction retourne 2 -> Alors 5 cheveaux dans le désordre
+    Si la fonction retourne 3 -> Alors 5 cheveaux dans le désordre
     Si la fonction retourne 4 -> Alors 3 cheveaux bien placé du 1er au 3ème
-    Si la fonction retourne 5 -> Alors 4 cheveaux dans le désorde
+    Si la fonction retourne 5 -> Alors 4 cheveaux dans le désorde sauf le premier
     Si la fonction retourne 6 -> Alors vous avez perdu
     """
 
     lunch = tirage
-    print(lunch)
 
     if c1 == lunch[0] and c2 == lunch[1] and c3 == lunch[2]:
         if c4 == lunch[3] and c5 == lunch[4]:

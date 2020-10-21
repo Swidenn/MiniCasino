@@ -30,129 +30,130 @@ class Nombre:
         self.x_dix = 942
 
         # Nombre en haut
-        self.un_image = pygame.image.load("assets/png/nombres/1.png")
+        self.un_tampon = pygame.image.load("assets/png/nombres/1.png")
+        self.un_image = self.un_tampon
         self.un_rect = self.un_image.get_rect()
         self.un_rect.x = self.x_un
         self.un_rect.y = self.y_haut
-        self.un_rect_tampon = self.un_image
 
-        self.deux_image = pygame.image.load("assets/png/nombres/2.png")
+
+        self.deux_tampon = pygame.image.load("assets/png/nombres/2.png")
+        self.deux_image = self.deux_tampon
         self.deux_rect = self.deux_image.get_rect()
         self.deux_rect.x = self.x_deux
         self.deux_rect.y = self.y_haut
-        self.deux_rect_tampon = self.deux_image
 
-        self.trois_image = pygame.image.load("assets/png/nombres/3.png")
+        self.trois_tampon = pygame.image.load("assets/png/nombres/3.png")
+        self.trois_image = self.trois_tampon
         self.trois_rect = self.trois_image.get_rect()
         self.trois_rect.x = self.x_trois
         self.trois_rect.y = self.y_haut
-        self.trois_rect_tampon = self.trois_image
 
-        self.quatre_image = pygame.image.load("assets/png/nombres/4.png")
+        self.quatre_tampon = pygame.image.load("assets/png/nombres/4.png")
+        self.quatre_image = self.quatre_tampon
         self.quatre_rect = self.quatre_image.get_rect()
         self.quatre_rect.x = self.x_quatre
         self.quatre_rect.y = self.y_haut
-        self.quatre_rect_tampon = self.quatre_image
 
-        self.cinq_image = pygame.image.load("assets/png/nombres/5.png")
+        self.cinq_tampon = pygame.image.load("assets/png/nombres/5.png")
+        self.cinq_image = self.cinq_tampon
         self.cinq_rect = self.cinq_image.get_rect()
         self.cinq_rect.x = self.x_cinq
         self.cinq_rect.y = self.y_haut
-        self.cinq_rect_tampon = self.cinq_image
 
-        self.six_image = pygame.image.load("assets/png/nombres/6.png")
+        self.six_tampon = pygame.image.load("assets/png/nombres/6.png")
+        self.six_image = self.six_tampon
         self.six_rect = self.six_image.get_rect()
         self.six_rect.x = self.x_six
         self.six_rect.y = self.y_haut
-        self.six_rect_tampon = self.six_image
 
-        self.sept_image = pygame.image.load("assets/png/nombres/7.png")
+        self.sept_tampon = pygame.image.load("assets/png/nombres/7.png")
+        self.sept_image = self.sept_tampon
         self.sept_rect = self.sept_image.get_rect()
         self.sept_rect.x = self.x_sept
         self.sept_rect.y = self.y_haut
-        self.sept_rect_tampon = self.sept_image
 
-        self.huit_image = pygame.image.load("assets/png/nombres/8.png")
+        self.huit_tampon = pygame.image.load("assets/png/nombres/8.png")
+        self.huit_image = self.huit_tampon
         self.huit_rect = self.huit_image.get_rect()
         self.huit_rect.x = self.x_huit
         self.huit_rect.y = self.y_haut
-        self.huit_rect_tampon = self.huit_image
 
-        self.neuf_image = pygame.image.load("assets/png/nombres/9.png")
+        self.neuf_tampon = pygame.image.load("assets/png/nombres/9.png")
+        self.neuf_image = self.neuf_tampon
         self.neuf_rect = self.neuf_image.get_rect()
         self.neuf_rect.x = self.x_neuf
         self.neuf_rect.y = self.y_haut
-        self.neuf_rect_tampon = self.neuf_image
 
-        self.dix_image = pygame.image.load("assets/png/nombres/10.png")
+        self.dix_tampon = pygame.image.load("assets/png/nombres/10.png")
+        self.dix_image = self.dix_tampon
         self.dix_rect = self.dix_image.get_rect()
         self.dix_rect.x = self.x_dix
         self.dix_rect.y = self.y_haut
-        self.dix_rect_tampon = self.dix_image
 
         # Nombre en bas
-        self.onze_image = pygame.image.load("assets/png/nombres/11.png")
+        self.onze_tampon = pygame.image.load("assets/png/nombres/11.png")
+        self.onze_image = self.onze_tampon
         self.onze_rect = self.onze_image.get_rect()
         self.onze_rect.x = self.x_un
         self.onze_rect.y = self.y_bas
-        self.onze_rect_tampon = self.onze_image
 
-        self.douze_image = pygame.image.load("assets/png/nombres/12.png")
+        self.douze_tampon = pygame.image.load("assets/png/nombres/12.png")
+        self.douze_image = self.douze_tampon
         self.douze_rect = self.douze_image.get_rect()
         self.douze_rect.x = self.x_deux
         self.douze_rect.y = self.y_bas
-        self.douze_rect_tampon = self.douze_image
 
-        self.treize_image = pygame.image.load("assets/png/nombres/13.png")
+        self.treize_tampon = pygame.image.load("assets/png/nombres/13.png")
+        self.treize_image = self.treize_tampon
         self.treize_rect = self.treize_image.get_rect()
         self.treize_rect.x = self.x_trois
         self.treize_rect.y = self.y_bas
-        self.treize_rect_tampon = self.treize_image
 
-        self.quatorze_image = pygame.image.load("assets/png/nombres/14.png")
+        self.quatorze_tampon = pygame.image.load("assets/png/nombres/14.png")
+        self.quatorze_image = self.quatorze_tampon
         self.quatorze_rect = self.quatorze_image.get_rect()
         self.quatorze_rect.x = self.x_quatre
         self.quatorze_rect.y = self.y_bas
-        self.quatorze_rect_tampon = self.quatorze_image
 
-        self.quinze_image = pygame.image.load("assets/png/nombres/15.png")
+        self.quinze_tampon = pygame.image.load("assets/png/nombres/15.png")
+        self.quinze_image = self.quinze_tampon
         self.quinze_rect = self.quinze_image.get_rect()
         self.quinze_rect.x = self.x_cinq
         self.quinze_rect.y = self.y_bas
-        self.quinze_rect_tampon = self.quinze_image
 
-        self.seize_image = pygame.image.load("assets/png/nombres/16.png")
+        self.seize_tampon = pygame.image.load("assets/png/nombres/16.png")
+        self.seize_image = self.seize_tampon
         self.seize_rect = self.seize_image.get_rect()
         self.seize_rect.x = self.x_six
         self.seize_rect.y = self.y_bas
-        self.seize_rect_tampon = self.seize_image
 
-        self.dixsept_image = pygame.image.load("assets/png/nombres/17.png")
+        self.dixsept_tampon = pygame.image.load("assets/png/nombres/17.png")
+        self.dixsept_image = self.dixsept_tampon
         self.dixsept_rect = self.dixsept_image.get_rect()
         self.dixsept_rect.x = self.x_sept
         self.dixsept_rect.y = self.y_bas
-        self.dixsept_rect_tampon = self.dixsept_image
 
-        self.dixhuit_image = pygame.image.load("assets/png/nombres/18.png")
+        self.dixhuit_tampon = pygame.image.load("assets/png/nombres/18.png")
+        self.dixhuit_image = self.dixhuit_tampon
         self.dixhuit_rect = self.dixhuit_image.get_rect()
         self.dixhuit_rect.x = self.x_huit
         self.dixhuit_rect.y = self.y_bas
-        self.dixhuit_rect_tampon = self.dixhuit_image
 
-        self.dixneuf_image = pygame.image.load("assets/png/nombres/19.png")
+        self.dixneuf_tampon = pygame.image.load("assets/png/nombres/19.png")
+        self.dixneuf_image = self.dixneuf_tampon
         self.dixneuf_rect = self.dixneuf_image.get_rect()
         self.dixneuf_rect.x = self.x_neuf
         self.dixneuf_rect.y = self.y_bas
-        self.dixneuf_rect_tampon = self.dixneuf_image
 
-        self.vingt_image = pygame.image.load("assets/png/nombres/20.png")
+        self.vingt_tampon = pygame.image.load("assets/png/nombres/20.png")
+        self.vingt_image = self.vingt_tampon
         self.vingt_rect = self.vingt_image.get_rect()
         self.vingt_rect.x = self.x_dix
         self.vingt_rect.y = self.y_bas
-        self.vingt_rect_tampon = self.vingt_image
 
-        self.scale_deuxieme = (85, 85)
-        self.scale_troisieme = (80, 80)
+        self.scale_d = (85, 85)
+        self.scale_t = (80, 80)
         self.scale = (77, 77)
 
     def nb_position(self, screen):
@@ -185,15 +186,3 @@ class Nombre:
         screen.blit(self.dixhuit_image, self.dixhuit_rect)
         screen.blit(self.dixneuf_image, self.dixneuf_rect)
         screen.blit(self.vingt_image, self.vingt_rect)
-
-    def deuxieme(self, surface):
-
-        pygame.transform.scale(surface, self.scale_deuxieme)
-
-    def troisieme(self, surface):
-
-        pygame.transform.scale(surface, self.scale_troisieme)
-
-    def quatrieme(self, surface):
-
-        pygame.transform.scale(surface, self.scale)

@@ -22,6 +22,15 @@ class Game:
     def __init__(self):
 
         self.press = {}
+        self.money = 5000
+
+        self.color = (191, 191, 190)
+        self.font = pygame.font.SysFont("Showcard Gothic", 30)
+
+        self.t_money = self.font.render(str(self.money), 1, self.color)
+        self.t_money_rect = self.t_money.get_rect()
+        self.t_money_rect.x = 995 - self.t_money_rect.width
+        self.t_money_rect.y = 38
 
 # 1- Ici j'initialise tous ce qui il y'aura pour le menu pause.
         self.pause_image = pygame.image.load("assets/png/pause_background.png")
@@ -43,6 +52,11 @@ class Game:
         self.quit_button_image_rect = self.quit_button_image.get_rect()
         self.quit_button_image_rect.x = 1080/2 - self.quit_button_image_rect.width/2
         self.quit_button_image_rect.y = 590
+
+        self.coins_image = pygame.image.load("assets/png/coins.png")
+        self.coins_image_rect = self.coins_image.get_rect()
+        self.coins_image_rect.x = 1000
+        self.coins_image_rect.y = 20
 
 # 2- Ici j'initialise tous ce qui il y'aura pour le menu choose.
         self.choose_image = pygame.image.load("assets/png/choose_background.png")
@@ -75,6 +89,15 @@ class Game:
         self.is_game = False
 
         screen.blit(self.pause_image, self.pause_image_rect)
+        screen.blit(self.coins_image, self.coins_image_rect)
+
+        self.t_money = self.font.render(str(self.money), 1, self.color)
+        self.t_money_rect = self.t_money.get_rect()
+        self.t_money_rect.x = 995 - self.t_money_rect.width
+        self.t_money_rect.y = 38
+
+        screen.blit(self.t_money, self.t_money_rect)
+
         screen.blit(self.pause_play_image, self.pause_play_image_rect)
         screen.blit(self.menu_button_image, self.pause_menu_button_image_rect)
         screen.blit(self.quit_button_image, self.quit_button_image_rect)
@@ -93,3 +116,12 @@ class Game:
 
         screen.blit(self.choose_image, self.choose_image_rect)
         screen.blit(self.choix_milieu_image, self.choix_milieu_image_rect)
+        
+        screen.blit(self.coins_image, self.coins_image_rect)
+
+        self.t_money = self.font.render(str(self.money), 1, self.color)
+        self.t_money_rect = self.t_money.get_rect()
+        self.t_money_rect.x = 995 - self.t_money_rect.width
+        self.t_money_rect.y = 38
+
+        screen.blit(self.t_money, self.t_money_rect)
