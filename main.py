@@ -13,6 +13,7 @@ le jeu vraiment.
 
 from courseepique import Course
 from game import Game
+from machineasous import *
 import pygame
 
 pygame.init()
@@ -33,6 +34,7 @@ play_button_image_rect.y = 590
 
 game = Game()
 course = Course()
+mt = Machine_A_Trous()
 
 run = True
 
@@ -45,10 +47,11 @@ while run:
         screen.blit(play_button_image, play_button_image_rect)
 
     elif game.is_game:
+
         if game.is_choose_menu:
             game.choose(screen)
 
-        elif course.is_rules and not game.is_choose_menu:
+        elif course.is_rules and not game.is_choose_menu and course.is_lunch:
             course.rule(screen)
 
         elif course.is_lunch and game.is_game and not course.is_validation:
@@ -56,6 +59,11 @@ while run:
 
         elif game.is_game and course.is_validation:
             course.validation(screen)
+
+        elif mt.machine_is_lunch and game.is_game:
+
+            mt.start_machine(screen, game)
+            mt.emplacements.draw(screen)
 
     elif game.is_paused:
         game.paused(screen)
@@ -83,6 +91,12 @@ while run:
                 elif game.is_paused:
                     game.is_paused = False
                     game.is_game = True
+
+            if event.key == pygame.K_SPACE:
+
+                if game.is_game and mt.machine_is_lunch and game.money >= 3:
+                    pygame.time.wait(100)
+                    mt.spin(game)
 
         # 7- Evènement si une touche est lâcher
         elif event.type == pygame.KEYUP:
@@ -118,7 +132,7 @@ while run:
 
             if game.is_game:
 
-                if game.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch:
+                if game.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch and not game.is_paused:
                     game.is_choose_menu = False
                     course.is_lunch = True
                     pygame.time.wait(100)
@@ -128,6 +142,12 @@ while run:
                     pygame.time.wait(100)
 
                 course.grille_selection(event, game)
+
+                if game.choix_gauche_image_rect.collidepoint(event.pos) and not mt.machine_is_lunch:
+                    game.is_choose_menu = False
+                    mt.machine_is_lunch = True
+                    pygame.time.wait(100)
+
 
             if course.is_validation and course.cheval.fin and not game.is_paused:
 

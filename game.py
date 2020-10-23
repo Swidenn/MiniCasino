@@ -22,7 +22,7 @@ class Game:
     def __init__(self):
 
         self.press = {}
-        self.money = 5000
+        self.money = 50
 
         self.color = (191, 191, 190)
         self.font = pygame.font.SysFont("Showcard Gothic", 30)
@@ -67,7 +67,12 @@ class Game:
         self.choix_milieu_image = pygame.image.load("assets/png/choose_milieu.png")
         self.choix_milieu_image_rect = self.choix_milieu_image.get_rect()
         self.choix_milieu_image_rect.x = 1080/2 - self.choix_milieu_image_rect.width/2
-        self.choix_milieu_image_rect.y = 106
+        self.choix_milieu_image_rect.y = 105
+
+        self.choix_gauche_image = pygame.image.load("assets/png/choose_left.png")
+        self.choix_gauche_image_rect = self.choix_gauche_image.get_rect()
+        self.choix_gauche_image_rect.x = 19
+        self.choix_gauche_image_rect.y = 105
 
 # 3- Ici c'est les booléens qui indiqueront l'état dans lequel le jeu se trouve
         self.is_menu = True
@@ -89,6 +94,10 @@ class Game:
         self.is_game = False
 
         screen.blit(self.pause_image, self.pause_image_rect)
+
+        self.coins_image_rect.x = 1000
+        self.coins_image_rect.y = 20
+
         screen.blit(self.coins_image, self.coins_image_rect)
 
         self.t_money = self.font.render(str(self.money), 1, self.color)
@@ -101,6 +110,20 @@ class Game:
         screen.blit(self.pause_play_image, self.pause_play_image_rect)
         screen.blit(self.menu_button_image, self.pause_menu_button_image_rect)
         screen.blit(self.quit_button_image, self.quit_button_image_rect)
+
+    def pos_money(self,screen, pos_x, pos_y):
+
+        self.coins_image_rect.x = pos_x
+        self.coins_image_rect.y = pos_y - 18
+
+        screen.blit(self.coins_image, self.coins_image_rect)
+
+        self.t_money = self.font.render(str(self.money), 1, self.color)
+        self.t_money_rect = self.t_money.get_rect()
+        self.t_money_rect.x = pos_x - 5 - self.t_money_rect.width
+        self.t_money_rect.y = pos_y
+
+        screen.blit(self.t_money, self.t_money_rect)
 
     def choose(self, screen):
         """
@@ -116,6 +139,7 @@ class Game:
 
         screen.blit(self.choose_image, self.choose_image_rect)
         screen.blit(self.choix_milieu_image, self.choix_milieu_image_rect)
+        screen.blit(self.choix_gauche_image, self.choix_gauche_image_rect)
         
         screen.blit(self.coins_image, self.coins_image_rect)
 
