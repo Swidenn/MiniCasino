@@ -1,0 +1,42 @@
+Ce fichier contiendra tous les bugs connus sur le jeu.
+
+ ========================= ★ =========================
+|                  BUGS PRIMORDIAUX!                  |
+ ========================= ★ =========================
+
+ 1- Bugs par apport au boutton menu non fonctionnel 
+    du menu pause. -> Corrigé
+
+ 2- Bugs par apport au boutton play du menu pause
+    quand on joue à la machine à sous.
+
+    (précision: Quand on est dans le jeu machine à
+     trous et qu'on fait pause, lorsqu'on appuie
+     sur le bouton play il nous renvoie sur le jeu 
+     course epique. Or lorsqu'on fait ECHAP il nous 
+     remet normalement, sur machine à trous.
+     
+     piste -> Conflit de bouton (un bouton est surrement
+              actionné en même temps que le play))
+
+
+ ========================= ★ =========================
+|                        BUGS!                        |
+ ========================= ★ =========================
+
+ 1- Légers bug au niveau du bouton play du début.
+
+    (précision: Quand on appuie juste un peu au-dessus
+     du bouton play il nous renvoie sur le jeu course 
+     epique
+
+     piste -> Soucis de conditionning)
+
+ ========================= ★ =========================
+|              FONCTIONNALITE A AJOUTER!              |
+ ========================= ★ =========================
+
+ 1- Ajouter le troisième jeu
+
+ 2- Quand j'appuie menu qu'au lieu qui me renvoie à
+    l'écran titre, qu'il me renvoie à l'écran de sélection de jeu.
