@@ -8,12 +8,11 @@ Terminal Générale n°9
 But de ce fichier:
 Code ayant le jeu course de cheveaux en lui même
 """
-
-import pygame
+import time
 from nombres import Nombre
 from modules.tirage import tirage
 from modules.course import course
-from game import Game
+from game import *
 
 
 class Cheval(pygame.sprite.Sprite):
@@ -50,6 +49,7 @@ class Course:
         self.game = Game()
         self.nombre = Nombre()
         self.cheval = Cheval()
+        self.nomoney = NoMoney()
 
         self.is_premier_pris = False
         self.is_deuxieme_pris = False
@@ -64,6 +64,9 @@ class Course:
         self.c5 = 0
 
         self.suite = tirage()
+
+        self.t = False
+        self.z = 0
 
         self.nb_resultat = course(self.c1, self.c2, self.c3, self.c4, self.c5, self.suite)
 
@@ -91,8 +94,8 @@ class Course:
 
         self.position_image = pygame.image.load("assets/png/position_carte.png")
         self.position_image_rect = self.position_image.get_rect()
-        self.position_image_rect.x = 1080 / 2 - self.position_image_rect.width / 2
-        self.position_image_rect.y = 495
+        self.position_image_rect.x = 343
+        self.position_image_rect.y = 487
 
         self.confirm_image = pygame.image.load("assets/png/confirm_button.png")
         self.confirm_image_rect = self.confirm_image.get_rect()
@@ -143,7 +146,7 @@ class Course:
 
             self.cheval.move_cheval()
 
-    def lunch(self, screen):
+    def lunch(self, screen, game):
         """
         fonction qui lance la grille de choix
 
@@ -158,6 +161,16 @@ class Course:
             self.nombre.nb_position(screen)
             screen.blit(self.position_image, self.position_image_rect)
             screen.blit(self.confirm_image, self.confirm_image_rect)
+
+            game.pos_money(screen, 1000, 655)
+
+        if self.t:
+            self.nomoney.affichage_nomoney(screen, 422, 600, 25)
+
+            for i in range (1000):
+                self.z += 1
+            if self.z >= 100000:
+                self.t = False
 
     def validation(self, screen):
 
@@ -2054,14 +2067,19 @@ class Course:
 
                 self.is_cinqieme_pris = True
 
-        if self.compteur == 5 and not self.is_validation and self.is_lunch and game.money >= 10:
+        if self.compteur == 5 and not self.is_validation and self.is_lunch:
 
             if self.confirm_image_rect.collidepoint(event.pos):
 
-                self.is_lunch = False
-                self.is_validation = True
-                self.test_position(game)
+                if game.money >= 10:
 
-                game.money -= 10
+                    self.is_lunch = False
+                    self.is_validation = True
+                    self.test_position(game)
 
-                pygame.time.wait(100)
+                    game.money -= 10
+
+                else:
+                    self.t = True
+                    self.z = 0
+

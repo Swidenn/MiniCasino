@@ -1,11 +1,12 @@
 # coding: utf-8
 import pygame
 import numpy as np
+from game import NoMoney
+
 
 class Emplacement(pygame.sprite.Sprite):
 
     def __init__(self, pos_x):
-
         super().__init__()
         self.image = pygame.image.load("assets/png/seven.png")
         self.rect = self.image.get_rect()
@@ -15,11 +16,14 @@ class Emplacement(pygame.sprite.Sprite):
     def setimg(self, image):
         self.image = image
 
-class Machine_A_Trous:
+
+class MachineATrous:
 
     def __init__(self):
 
         self.machine_is_lunch = False
+
+        self.nomoney = NoMoney()
 
         self.machine_image = pygame.image.load("assets/png/fond_machineatrous.png")
         self.machine_image_rect = self.machine_image.get_rect()
@@ -37,6 +41,8 @@ class Machine_A_Trous:
         self.lose_image_rect.y = 415
 
         self.compte = 0
+        self.t = False
+        self.z = 0
 
         self.emplacements = pygame.sprite.Group()
 
@@ -64,6 +70,14 @@ class Machine_A_Trous:
         self.emplacements.draw(screen)
 
         game.pos_money(screen, 950, 620)
+
+        if self.t:
+            self.nomoney.affichage_nomoney(screen, 183, 550, 20)
+
+            for i in range (1000):
+                self.z += 1
+            if self.z >= 100000:
+                self.t = False
 
         if self.compte == 1:
             screen.blit(self.win_image, self.win_image_rect)
@@ -106,11 +120,3 @@ class Machine_A_Trous:
 
         else:
             self.compte = 0
-
-
-
-
-
-
-
-

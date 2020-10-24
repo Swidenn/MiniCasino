@@ -12,8 +12,8 @@ le jeu vraiment.
 """
 
 from courseepique import Course
-from game import Game
-from machineasous import Machine_A_Trous
+from game import *
+from machineasous import MachineATrous
 import pygame
 
 pygame.init()
@@ -24,7 +24,8 @@ screen = pygame.display.set_mode((1080, 720))
 
 game = Game()
 course = Course()
-mt = Machine_A_Trous()
+mt = MachineATrous()
+nomoney = NoMoney()
 
 run = True
 
@@ -59,9 +60,15 @@ while run:
                     game.is_game = True
 
             if event.key == pygame.K_SPACE:
-                if game.is_game and mt.machine_is_lunch and game.money >= 3:
-                    pygame.time.wait(100)
-                    mt.spin(game)
+
+                if game.is_game and mt.machine_is_lunch:
+
+                    if game.money >= 3:
+                        pygame.time.wait(100)
+                        mt.spin(game)
+                    else:
+                        mt.t = True
+                        mt.z = 0
 
         # 7- Evènement si une touche est lâcher
         elif event.type == pygame.KEYUP:
