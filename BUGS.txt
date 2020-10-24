@@ -32,6 +32,8 @@ Ce fichier contiendra tous les bugs connus sur le jeu.
 
      piste -> Soucis de conditionning)
 
+ 2- Ajouter le menu win quand on gagne à la course de cheveaux !
+
  ========================= ★ =========================
 |              FONCTIONNALITE A AJOUTER!              |
  ========================= ★ =========================
