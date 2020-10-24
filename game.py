@@ -81,6 +81,100 @@ class Game:
         self.is_game = False
         self.is_course_epique = False
 
+    def game_start(self, screen, course, mt):
+
+        if self.is_menu:
+            self.game_menu(screen)
+
+        elif self.is_game:
+
+            if self.is_choose_menu:
+                self.choose(screen)
+
+            elif course.is_rules and not self.is_choose_menu and course.is_lunch:
+                course.rule(screen)
+
+            elif course.is_lunch and self.is_game and not course.is_validation:
+                course.lunch(screen)
+
+            elif self.is_game and course.is_validation:
+                course.validation(screen)
+
+            elif mt.machine_is_lunch and self.is_game:
+
+                mt.start_machine(screen, self)
+                mt.emplacements.draw(screen)
+
+        elif self.is_paused:
+            self.paused(screen)
+
+    def game_button(self, event, course, mt):
+
+        if self.is_paused:
+
+            if self.quit_button_image_rect.collidepoint(event.pos):
+                run = False
+                pygame.quit()
+                pygame.time.wait(100)
+
+            elif self.pause_play_image_rect.collidepoint(event.pos):
+                self.is_paused = False
+                self.is_game = True
+                pygame.time.wait(100)
+
+            elif self.pause_menu_button_image_rect.collidepoint(event.pos):
+                self.game_over(course, mt)
+
+        if self.is_menu:
+
+            if self.play_button_image_rect.collidepoint(event.pos):
+                self.is_menu = False
+                self.is_choose_menu = True
+                self.is_game = True
+                pygame.time.wait(100)
+
+        if self.is_game:
+
+            if self.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch and not self.is_paused:
+                self.is_choose_menu = False
+                course.is_lunch = True
+                pygame.time.wait(100)
+
+            elif self.choix_gauche_image_rect.collidepoint(event.pos) and not mt.machine_is_lunch:
+                self.is_choose_menu = False
+                mt.machine_is_lunch = True
+                pygame.time.wait(100)
+
+            if course.ok_image_rect.collidepoint(event.pos) and course.is_lunch:
+                course.is_rules = False
+                pygame.time.wait(100)
+
+            course.grille_selection(event, self)
+
+            if course.is_validation and course.cheval.fin and not self.is_paused:
+
+                if course.quit_img_rect.collidepoint(event.pos):
+                    run = False
+                    pygame.quit()
+                    pygame.time.wait(100)
+
+                elif course.retry_image_rect.collidepoint(event.pos):
+                    self.game_over(course, mt)
+
+    def game_over(self, course, mt):
+
+        self.is_menu = True
+        self.is_choose_menu = False
+        self.is_paused = False
+        self.is_game = False
+        self.is_course_epique = False
+
+        course.is_rules = True
+        course.is_lunch = False
+        course.is_validation = False
+
+        mt.machine_is_lunch = False
+
     def paused(self, screen):
         """
         Fonction d'affichage du menu pause
@@ -90,8 +184,6 @@ class Game:
 
         :return:
         """
-
-        self.is_game = False
 
         screen.blit(self.pause_image, self.pause_image_rect)
 
@@ -110,6 +202,21 @@ class Game:
         screen.blit(self.pause_play_image, self.pause_play_image_rect)
         screen.blit(self.menu_button_image, self.pause_menu_button_image_rect)
         screen.blit(self.quit_button_image, self.quit_button_image_rect)
+
+    def game_menu(self, screen):
+
+        self.menu_image = pygame.image.load("assets/png/background.png")
+        self.menu_rect = self.menu_image.get_rect()
+        self.menu_rect.x = 0
+        self.menu_rect.y = 0
+
+        self.play_button_image = pygame.image.load("assets/png/play_button.png")
+        self.play_button_image_rect = self.play_button_image.get_rect()
+        self.play_button_image_rect.x = 1080 / 2 - self.play_button_image_rect.width / 2
+        self.play_button_image_rect.y = 590
+
+        screen.blit(self.menu_image, self.menu_rect)
+        screen.blit(self.play_button_image, self.play_button_image_rect)
 
     def pos_money(self,screen, pos_x, pos_y):
 

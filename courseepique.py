@@ -2054,11 +2054,14 @@ class Course:
 
                 self.is_cinqieme_pris = True
 
-        if self.compteur == 5 and not self.is_validation:
+        if self.compteur == 5 and not self.is_validation and self.is_lunch and game.money >= 10:
 
             if self.confirm_image_rect.collidepoint(event.pos):
+
                 self.is_lunch = False
                 self.is_validation = True
                 self.test_position(game)
+
                 game.money -= 10
+
                 pygame.time.wait(100)
