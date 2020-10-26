@@ -50,7 +50,7 @@ class Game:
     def __init__(self):
 
         self.press = {}
-        self.money = 500
+        self.money = 15
 
         self.color = (191, 191, 190)
         self.font = pygame.font.SysFont("Showcard Gothic", 30)
@@ -112,6 +112,16 @@ class Game:
         self.choix_gauche_image_rect = self.choix_gauche_image.get_rect()
         self.choix_gauche_image_rect.x = 19
         self.choix_gauche_image_rect.y = 105
+
+        self.choix_droit_image = pygame.image.load("assets/png/choose_right.png")
+        self.choix_droit_image_rect = self.choix_droit_image.get_rect()
+        self.choix_droit_image_rect.x = 715
+        self.choix_droit_image_rect.y = 105
+
+        self.prochainement = pygame.image.load("assets/png/prochainement.png")
+        self.prochainement_rect = self.prochainement.get_rect()
+        self.prochainement_rect.x = 715
+        self.prochainement_rect.y = 105
 
         # 3- Ici c'est les booléens qui indiqueront l'état dans lequel le jeu se trouve
         self.is_menu = True
@@ -183,13 +193,13 @@ class Game:
                 self.is_choose_menu = True
                 self.is_game = True
 
-        if self.is_game:
+        if self.is_game and not self.is_paused:
 
-            if self.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch and not self.is_paused:
+            if self.choix_milieu_image_rect.collidepoint(event.pos) and not course.is_lunch and not mt.machine_is_lunch:
                 self.is_choose_menu = False
                 course.is_lunch = True
 
-            elif self.choix_gauche_image_rect.collidepoint(event.pos) and not mt.machine_is_lunch:
+            elif self.choix_gauche_image_rect.collidepoint(event.pos) and not mt.machine_is_lunch and not course.is_lunch:
                 self.is_choose_menu = False
                 mt.machine_is_lunch = True
 
@@ -198,7 +208,7 @@ class Game:
 
             course.grille_selection(event, self)
 
-            if course.is_validation and course.cheval.fin and not self.is_paused:
+            if course.is_validation and course.cheval.fin:
 
                 if course.quit_img_rect.collidepoint(event.pos):
                     run = False
@@ -266,9 +276,11 @@ class Game:
 
         self.is_menu = False
 
-        screen.blit(self.choose_image, self.choose_image_rect)
         screen.blit(self.choix_milieu_image, self.choix_milieu_image_rect)
         screen.blit(self.choix_gauche_image, self.choix_gauche_image_rect)
+        screen.blit(self.choix_droit_image, self.choix_droit_image_rect)
+        screen.blit(self.prochainement, self.prochainement_rect)
+        screen.blit(self.choose_image, self.choose_image_rect)
 
         screen.blit(self.coins_image, self.coins_image_rect)
 

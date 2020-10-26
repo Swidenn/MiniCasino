@@ -9,7 +9,7 @@ def course(c1, c2, c3, c4, c5, tirage):
     :param c3:
     :param c4:
     :param c5:
-    :param liste:
+    :param tirage:
     apport de la liste de cheveaux chevaux
 
     :return:

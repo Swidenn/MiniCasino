@@ -12,9 +12,11 @@ import pygame
 
 
 class Nombre:
+    """
+    Classe des nombres afficher dans la Course Epique !
+    """
 
     def __init__(self):
-
         self.y_haut = 34
         self.y_bas = 161
 
@@ -35,7 +37,6 @@ class Nombre:
         self.un_rect = self.un_image.get_rect()
         self.un_rect.x = self.x_un
         self.un_rect.y = self.y_haut
-
 
         self.deux_tampon = pygame.image.load("assets/png/nombres/2.png")
         self.deux_image = self.deux_tampon

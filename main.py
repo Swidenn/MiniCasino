@@ -18,7 +18,7 @@ import pygame
 
 pygame.init()
 
-# 1- Mise en place de la surface screen et de tout ses attributs.
+# Mise en place de la surface screen et de tout ses attributs.
 pygame.display.set_caption("MiniCasino !")
 screen = pygame.display.set_mode((1080, 720))
 
@@ -29,24 +29,24 @@ nomoney = NoMoney()
 
 run = True
 
-# 2- Boucle d'affichage du jeu, sans ça pas de jeu tous simplement.
+# Boucle d'affichage du jeu, sans ça pas de jeu tous simplement.
 while run:
 
-    # 3- Les booléen de conitionnement.
+    # Les booléen de conitionnement.
     game.game_start(screen, course, mt)
 
-    # 4- Flip() est essentiel pour update la surface donc très importants.
+    # Flip() est essentiel pour update la surface donc très importants.
     pygame.display.flip()
 
-    # 5- Boucle for de détection ici toutes les touches et évenements fait sur la
-    #    surface sont récupérer et manipuler ici.
+    # Boucle for de détection ici toutes les touches et évenements fait sur la
+    # surface sont récupérer et manipuler ici.
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             run = False
             pygame.quit()
 
-        # 6 - Evènement si une touche est presser
+        # Evènement si une touche est presser
         elif event.type == pygame.KEYDOWN:
             game.press[event.key] = True
 
@@ -70,11 +70,13 @@ while run:
                         mt.t = True
                         mt.z = 0
 
-        # 7- Evènement si une touche est lâcher
+        # Evènement si une touche est lâcher
         elif event.type == pygame.KEYUP:
             game.press[event.key] = False
 
-        # 8- Evènement le boutton gauche de la souris clique
+        # Evènement le boutton gauche de la souris clique
         elif event.type == pygame.MOUSEBUTTONDOWN:
 
             game.game_button(event, course, mt)
+
+
